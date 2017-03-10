@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{E0471801-F83C-47E7-B689-43D18A74B367}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{009FCF33-CFDD-49D2-B0DF-04CA80A12BDB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Javithalion.PubSub.Client", "Javithalion.PubSub.Client\Javithalion.PubSub.Client.xproj", "{5B1A5F80-E8AC-4A16-B342-740E84C4507E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Javithalion.PubSub.Server", "Javithalion.PubSub.Server\Javithalion.PubSub.Server.xproj", "{53E0D7F2-EBCD-471D-A5DB-D49082A708EA}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Javithalion.PubSub.ClientUsage", "Javithalion.PubSub.ClientUsage\Javithalion.PubSub.ClientUsage.xproj", "{2A326C42-B4A1-4DA1-B311-2B2CBB242B65}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Javithalion.PubSub.ServerUsage", "Javithalion.PubSub.ServerUsage\Javithalion.PubSub.ServerUsage.xproj", "{14BFA1E0-6BA8-4A67-AED3-9BD1CC8F1C81}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Javithalion.PubSub.Commands", "Javithalion.PubSub.Commands\Javithalion.PubSub.Commands.xproj", "{F16C7ED4-2AEA-4483-995F-DEB174A3AA9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B1A5F80-E8AC-4A16-B342-740E84C4507E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B1A5F80-E8AC-4A16-B342-740E84C4507E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B1A5F80-E8AC-4A16-B342-740E84C4507E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B1A5F80-E8AC-4A16-B342-740E84C4507E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53E0D7F2-EBCD-471D-A5DB-D49082A708EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E0D7F2-EBCD-471D-A5DB-D49082A708EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E0D7F2-EBCD-471D-A5DB-D49082A708EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E0D7F2-EBCD-471D-A5DB-D49082A708EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A326C42-B4A1-4DA1-B311-2B2CBB242B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A326C42-B4A1-4DA1-B311-2B2CBB242B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A326C42-B4A1-4DA1-B311-2B2CBB242B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A326C42-B4A1-4DA1-B311-2B2CBB242B65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14BFA1E0-6BA8-4A67-AED3-9BD1CC8F1C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14BFA1E0-6BA8-4A67-AED3-9BD1CC8F1C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14BFA1E0-6BA8-4A67-AED3-9BD1CC8F1C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14BFA1E0-6BA8-4A67-AED3-9BD1CC8F1C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16C7ED4-2AEA-4483-995F-DEB174A3AA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16C7ED4-2AEA-4483-995F-DEB174A3AA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16C7ED4-2AEA-4483-995F-DEB174A3AA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16C7ED4-2AEA-4483-995F-DEB174A3AA9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B1A5F80-E8AC-4A16-B342-740E84C4507E} = {E0471801-F83C-47E7-B689-43D18A74B367}
+		{53E0D7F2-EBCD-471D-A5DB-D49082A708EA} = {E0471801-F83C-47E7-B689-43D18A74B367}
+		{2A326C42-B4A1-4DA1-B311-2B2CBB242B65} = {009FCF33-CFDD-49D2-B0DF-04CA80A12BDB}
+		{14BFA1E0-6BA8-4A67-AED3-9BD1CC8F1C81} = {009FCF33-CFDD-49D2-B0DF-04CA80A12BDB}
+		{F16C7ED4-2AEA-4483-995F-DEB174A3AA9C} = {E0471801-F83C-47E7-B689-43D18A74B367}
+	EndGlobalSection
+EndGlobal
