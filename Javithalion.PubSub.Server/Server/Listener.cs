@@ -2,6 +2,7 @@
 using Javithalion.PubSub.Server.MessageHandling.Factories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -19,32 +20,41 @@ namespace Javithalion.PubSub.Server.Server
         public void StartListening(int port)
         {
             Server = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            ConfigureSocketLowLevelOptions();           
+            ConfigureSocketLowLevelOptions();
 
             Server.Bind(new IPEndPoint(IPAddress.Any, port));
             var commandState = new CommandState();
 
             //Start listening for a new message.     
-            _continueListening = true;       
-            Task.Run(async() =>
+            _continueListening = true;
+            Task.Run(() =>
             {
                 while (_continueListening)
                 {
-                    EndPoint newClientEP = new IPEndPoint(IPAddress.Any, 0);
-                    var recievedBytes = Server.ReceiveFrom(commandState.Buffer, SocketFlags.Peek, ref newClientEP);
+                    try
+                    {
+                        EndPoint newClientEP = new IPEndPoint(IPAddress.Any, 0);
+                        var recievedBytes = Server.ReceiveFrom(commandState.Buffer, SocketFlags.Peek, ref newClientEP);
 
-                    var lenght = BitConverter.ToInt32(commandState.Buffer, 0);
-                    commandState.SetLength(lenght);
-                    recievedBytes = Server.ReceiveFrom(commandState.Buffer, SocketFlags.None, ref newClientEP);
+                        var lenght = BitConverter.ToInt32(commandState.Buffer, 0);
+                        commandState.SetLength(lenght);
+                        recievedBytes = Server.ReceiveFrom(commandState.Buffer, SocketFlags.None, ref newClientEP);
 
-                    var message = Encoding.UTF8.GetString(commandState.Buffer.Skip(4).ToArray());
-                    var command = CommandFactory.BuildCommand(message);
-                    command.SetEndpoint(newClientEP);
+                        var message = Encoding.UTF8.GetString(commandState.Buffer.Skip(4).ToArray());
+                        var command = CommandFactory.BuildCommand(message);
+                        command.SetEndpoint(newClientEP);
 
-                    var handler = HandlerFactory.GetHandlerForCommand(command);
-                    await handler.HandleAsync(command);
-
-                    commandState.ResetCommand();
+                        var handler = HandlerFactory.GetHandlerForCommand(command);
+                        handler.Handle(command);
+                    }
+                    catch (Exception exc)
+                    {
+                        Debug.WriteLine($"Linstener error: {exc.Message} UDP Server. {exc.ToString()}");
+                    }
+                    finally
+                    {
+                        commandState.ResetCommand();
+                    }
                 }
             });
         }
@@ -81,7 +91,7 @@ namespace Javithalion.PubSub.Server.Server
                 disposedValue = true;
             }
         }
-       
+
         public void Dispose()
         {
             Dispose(true);
@@ -102,7 +112,7 @@ namespace Javithalion.PubSub.Server.Server
 
             public CommandState ResetCommand()
             {
-                Length = 4;
+                Length = 1024 * 3;
                 Buffer = new byte[Length];
                 ReadHeaderPending = true;
                 ReadedBytes = 0;

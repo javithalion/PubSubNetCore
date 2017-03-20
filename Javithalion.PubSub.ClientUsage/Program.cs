@@ -39,6 +39,8 @@ namespace Javithalion.PubSub.ClientUsage
 
                     pubSubClient.SendMessageAboutTopicAsync(topic, message).ConfigureAwait(false);
 
+                    System.Threading.Thread.Sleep(50);
+
                 } while (!message.Equals("Exit", StringComparison.CurrentCultureIgnoreCase));
             }
         }

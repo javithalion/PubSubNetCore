@@ -19,7 +19,7 @@ namespace Javithalion.PubSub.Server.MessageHandling.Handlers
             _dispatcher = new Dispatcher();
         }
 
-        public async Task HandleAsync(Command rawCommand)
+        public void Handle(Command rawCommand)
         {
             var command = (PublishCommand)rawCommand;
             var bodyToSend = Encoding.UTF8.GetBytes(command.RawCommand);
@@ -28,7 +28,7 @@ namespace Javithalion.PubSub.Server.MessageHandling.Handlers
             foreach (var subscriber in subscribers)
                 try
                 {
-                    var bytesSent = await Task.Run(() => Listener.Server.SendTo(bodyToSend, SocketFlags.None, subscriber)).ConfigureAwait(false);
+                    var bytesSent = Listener.Server.SendTo(bodyToSend, SocketFlags.None, subscriber);
                     if (bytesSent <= 0)
                         _dispatcher.RemoveSubscriber(command.Topic, subscriber);
                 }

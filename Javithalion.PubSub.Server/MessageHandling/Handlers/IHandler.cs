@@ -8,6 +8,6 @@ namespace Javithalion.PubSub.Server.MessageHandling.Handlers
 {
     public interface IHandler
     {
-        Task HandleAsync(Command command);
+        void Handle(Command command);
     }
 }

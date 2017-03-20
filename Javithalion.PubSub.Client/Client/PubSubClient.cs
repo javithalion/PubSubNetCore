@@ -13,7 +13,7 @@ namespace Javithalion.PubSub.Client
 {
     public class PubSubClient : IDisposable
     {
-        private static bool _continueListening;
+        private bool _continueListening;
 
         private UdpClient _udpClient;
         private IPEndPoint _remoteEndpoint;
@@ -49,9 +49,9 @@ namespace Javithalion.PubSub.Client
                         if (_subcriptionActions.ContainsKey(command.Topic))
                             _subcriptionActions[command.Topic](textMessage);
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.ToString());
+                    catch (Exception exc)
+                    {                        
+                        Debug.WriteLine($"Client linstener error: {exc.Message} UDP client. {exc.ToString()}");
                     }
                 }
             });

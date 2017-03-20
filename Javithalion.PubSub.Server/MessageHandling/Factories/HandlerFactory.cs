@@ -14,9 +14,9 @@ namespace Javithalion.PubSub.Server.MessageHandling.Factories
             switch(command.Type)
             {
                 case CommandType.Publish:
-                    return new SubscribeHandler();
-                case CommandType.Subscribe:
                     return new PublishHandler();
+                case CommandType.Subscribe:
+                    return new SubscribeHandler();
                 default:
                     throw new InvalidOperationException("Not suported command");
 

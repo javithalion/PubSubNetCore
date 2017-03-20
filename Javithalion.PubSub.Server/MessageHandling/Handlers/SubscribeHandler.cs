@@ -15,10 +15,10 @@ namespace Javithalion.PubSub.Server.MessageHandling.Handlers
             _dispatcher = new Dispatcher();
         }
 
-        public async Task HandleAsync(Command rawCommand)
+        public void Handle(Command rawCommand)
         {
             var command = (SubscribeCommand)rawCommand;
-            await Task.Run(() => _dispatcher.AddSubscriber(command.Topic, command.Endpoint)).ConfigureAwait(false);
+            _dispatcher.AddSubscriber(command.Topic, command.Endpoint);
         }
     }
 }
